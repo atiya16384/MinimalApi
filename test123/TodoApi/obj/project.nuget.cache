@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Bt2Ngid1iKBCOJQIfl9QCiXu2brb9Gq45L1fGzyDxbJFe/QcYLYTdTpZ3awnGkdx8XAINDk8c7ztiFm+eyisJA==",
+  "dgSpecHash": "6inJaoqY6AQj9NRESnMOEVuoE5Xwm2cssG+paLSO/eFt+0iqgSkAhdw2cSsKMmvoQ4OoXmDP2sdsx6rvOeyKIA==",
   "success": true,
-  "projectFilePath": "/Users/atiyamahboob/Documents/test123/TodoApi/TodoApi.csproj",
+  "projectFilePath": "/Users/atiyamahboob/Documents/MinimalApi/test123/TodoApi/TodoApi.csproj",
   "expectedPackageFiles": [
     "/Users/atiyamahboob/.nuget/packages/microsoft.aspnetcore.diagnostics.entityframeworkcore/7.0.12/microsoft.aspnetcore.diagnostics.entityframeworkcore.7.0.12.nupkg.sha512",
     "/Users/atiyamahboob/.nuget/packages/microsoft.entityframeworkcore/7.0.12/microsoft.entityframeworkcore.7.0.12.nupkg.sha512",

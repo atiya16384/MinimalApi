@@ -665,11 +665,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/atiyamahboob/Documents/test123/TodoApi/TodoApi.csproj",
+      "projectUniqueName": "/Users/atiyamahboob/Documents/MinimalApi/test123/TodoApi/TodoApi.csproj",
       "projectName": "TodoApi",
-      "projectPath": "/Users/atiyamahboob/Documents/test123/TodoApi/TodoApi.csproj",
+      "projectPath": "/Users/atiyamahboob/Documents/MinimalApi/test123/TodoApi/TodoApi.csproj",
       "packagesPath": "/Users/atiyamahboob/.nuget/packages/",
-      "outputPath": "/Users/atiyamahboob/Documents/test123/TodoApi/obj/",
+      "outputPath": "/Users/atiyamahboob/Documents/MinimalApi/test123/TodoApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/atiyamahboob/.nuget/NuGet/NuGet.Config"
