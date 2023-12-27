@@ -1,5 +1,6 @@
 
 using System.Data;
+using System.Linq.Expressions;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
@@ -12,27 +13,39 @@ builder.Services.AddDbContext<PlanetDb>(opt => opt.UseInMemoryDatabase("PlanetLi
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddRouting();
 var app = builder.Build();
-
+// Adding try and catch will make the code robust
 //Get a list of planets from the swap api
 // attempt to implement some if statement
 app.MapGet("api/planets", async context =>
-{
+{   
+    
+    try{
     // Make an HTTP GET request to the swapi
     var httpClient= new HttpClient();
     var result = await httpClient.GetStringAsync("https://swapi.dev/api/planets/");
 //  we return the response in json form
     context.Response.Headers.Add("Content-Type", "application/json");
     await context.Response.WriteAsync(result);
+    }
+    catch (Exception ex) {
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+    }
 }
 );
 // we need to get a list of the favourite planets
 app.MapGet("api/planets-favourite", async context =>
 {   
+    try
+    {
     // GetRequiredService<T> () throws an InvalidOperationException if it can't find it.
     var dbContext = context.RequestServices.GetRequiredService<PlanetDb>();
     var favouritePlanets = await dbContext.FavouritePlanets.ToListAsync();
     // we write the favourite planets as json form
     await context.Response.WriteAsJsonAsync(favouritePlanets);
+    }
+    catch(Exception ex){
+         context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+    }
 }
 );
 
@@ -40,6 +53,8 @@ app.MapGet("api/planets-favourite", async context =>
 // we use post to add data to the in-memory database
 app.MapPost("/api/planets-favourite", async context =>
 {   
+    try{
+
     var dbContext = context.RequestServices.GetRequiredService<PlanetDb>();
     // read the json form of the data in the dataset FavouritePlanet
     var favouritePlanet = await context.Request.ReadFromJsonAsync<FavouritePlanet>();
@@ -58,10 +73,16 @@ app.MapPost("/api/planets-favourite", async context =>
     dbContext.FavouritePlanets.Add(favouritePlanet);
     await dbContext.SaveChangesAsync();
     }
+    }
+    catch(Exception ex){
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+    }
 
 });
 
 app.MapDelete("/api/planets-favourite/{id}", async context =>
+{
+    try
     {
     // retrieve the id value from the route values
     int? id = context.GetRouteValue("id") as int?;
@@ -78,6 +99,10 @@ app.MapDelete("/api/planets-favourite/{id}", async context =>
     dbContext.FavouritePlanets.Remove(favoritePlanet);
     await dbContext.SaveChangesAsync();
 
+    }
+    catch (Exception e){
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+    }
     });
 
 app.MapGet("api/planets-random", async context =>
