@@ -1,6 +1,6 @@
 # Star Wars Planets API
 
-This project is a minimal API developed in C# that interacts with the Star Wars API (SWAPI) and allows users to manage a list of their favourite Star Wars planets.
+This project is a minimal API developed in C# that interacts with the Star Wars API (SWAPI) and allows users to manage a list of their favourite Star Wars planets. Completed the project in 2 hours, so the result is alot more simpler.
 
 ## Features
 
